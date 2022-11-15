@@ -52,7 +52,7 @@ setup(
     version="0.0.1",
     packages=find_packages("src"),
     ext_modules=cythonize(get_ext_paths(Path("src")), compiler_directives=compiler_directives),
-    install_requires=[],
+    install_requires=["Cython==0.29.32"],
     package_dir={"": "src"},
     long_description=open(join(dirname(__file__), "README.md")).read(),
 )
