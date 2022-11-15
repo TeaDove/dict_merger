@@ -22,7 +22,6 @@ clean:
 	$(RM) -r *.so
 	$(RM) -r .pytest_cache
 	find . -name __pycache__ -exec rm -r {} +
-	#git clean -fdX
 
 uninstall:
 	pip uninstall -y dict_merger
