@@ -1,0 +1,1 @@
+include src/dict_merger/static_merger.pyx

@@ -1,6 +1,6 @@
 # Dict merger
 Simple Cython+Python library for merge python dictionaries recursively
-
+[PyPi](https://pypi.org/project/dict-merger/)
 ### Usage
 
 ```python
@@ -59,3 +59,7 @@ git clone https://github.com/TeaDove/dict_merger.git #@branch/tag
 cd dict_merger
 make install
 ```
+
+
+### Credits
+For any questions, suggestions etc write peter.ibragimov@gmail.com or to telegram: [@teadove](https://t.me/teadove)

@@ -1,7 +1,14 @@
 from copy import deepcopy
 
 
-def _rmerge(dict first_dict, dict second_dict, list path):
+def _rmerge(dict first_dict, dict second_dict, list path) -> dict:
+    """
+    Recursive merging utility
+
+    :param first_dict: first dict to merge, used as result
+    :param second_dict: dict to merge with
+    :param path: current dict path
+    """
     for key in second_dict:
         if (
             key in first_dict
@@ -16,11 +23,12 @@ def _rmerge(dict first_dict, dict second_dict, list path):
 
 def merge(dict first_dict, dict second_dict) -> dict:
     """
-    Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+    Merge 2 dicts recursively.
+    If more than one given dict defines the same key,
     then the one that is later in the argument sequence takes precedence.
-    :param first_dict:
-    :param second_dict:
-    :return:
+    :param first_dict: first dict to merge
+    :param second_dict: second dict to merge
+    :return: merged dict
     """
     return _rmerge(deepcopy(first_dict), second_dict, list())
 
@@ -28,18 +36,23 @@ def merge(dict first_dict, dict second_dict) -> dict:
 
 def merge_inplace(dict first_dict, dict second_dict) -> None:
     """
-    Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+    Merge 2 dicts recursively.
+    If more than one given dict defines the same key,
     then the one that is later in the argument sequence takes precedence.
-    First dict will contain merged version
+
+    First dict will contain merged version, faster in general.
+    :param first_dict: first dict to merge, will contain merged version
+    :param second_dict: second dict to merge
     """
     _rmerge(first_dict, second_dict, list())
 
 def merge_many(list dicts) -> dict:
     """
-    Merge list of dicts. If more than one given map or object defines the same key or attribute,
+    Merge list of dicts.
+    If more than one given dict defines the same key,
     then the one that is later in the argument sequence takes precedence.
     :param dicts: list of dicts
-    :return: dict
+    :return: merged dict
     """
     if len(dicts) < 2:
         raise Exception("List len should be at least 2")
