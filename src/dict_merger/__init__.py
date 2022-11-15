@@ -1,1 +1,3 @@
-from .c_merger import merge, merge_many, merge_inplace
+from . import c_merger, pure_merger
+
+__all__ = ["c_merger", "pure_merger"]

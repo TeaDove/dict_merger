@@ -1,0 +1,11 @@
+[flake8]
+ignore = D203, E203, E266, W503
+exclude =
+    **/__pycache__,
+    **/tests/*,
+    **/alembic/versions/*,
+    **/python,
+    **/.venv,
+    **/old/*
+max-complexity = 10
+max-line-length = 120

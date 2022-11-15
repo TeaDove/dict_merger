@@ -1,14 +1,10 @@
-from typing import List, Sequence, Mapping, MutableMapping
 from copy import deepcopy
+from typing import List, Mapping, MutableMapping, Sequence
 
 
 def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):
     for key in second_dict:
-        if (
-            key in first_dict
-            and isinstance(first_dict[key], dict)
-            and isinstance(second_dict[key], dict)
-        ):
+        if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):
             _rmerge(first_dict[key], second_dict[key], path + [str(key)])
         else:
             first_dict[key] = second_dict[key]

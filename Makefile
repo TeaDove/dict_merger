@@ -9,6 +9,7 @@ dist:
 redist: clean dist
 
 install:
+	python3 setup.py build_ext --inplace
 	pip install .
 
 install-from-source: dist
@@ -16,7 +17,9 @@ install-from-source: dist
 
 clean:
 	$(RM) -r build dist src/*.egg-info
-	$(RM) -r src/dict_merger/{utils.c,answer.c,fibonacci.c} src/cypack/sub/wrong.c
+	$(RM) -r src/dict_merger/*.c
+	$(RM) -r src/dict_merger/*.so
+	$(RM) -r *.so
 	$(RM) -r .pytest_cache
 	find . -name __pycache__ -exec rm -r {} +
 	#git clean -fdX
