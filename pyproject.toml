@@ -1,0 +1,20 @@
+[tool.isort]
+profile = "black"
+multi_line_output=3
+include_trailing_comma = true
+default_section = "FIRSTPARTY"
+known_third_party = ["Cython", "orjson","telegram","shapely", "dependency_injector","cache","structlog","tenacity","dependency_injector","phonenumbers",
+    "phone_iso3166","boto3","botocore","aws_xray_sdk","rediscluster","geopy","starlette","aiobotocore","aioboto3",
+    "aws_lambda_powertools","aws-xray-sdk","awsiotsdk","alembic","sqlalchemy","geoalchemy2","aredis","redis",
+    "psycopg2","asyncpg","pynamodb","backoff","requests","aiohttp","uvloop","fastapi","mangum","jwt",
+    "slackclient","celery","uvicorn","cachetools","locust","typer","aiogram","humps","pydantic","pytz",
+    "ujson","returns","loguru","tqdm","pytz", "whoosh"]
+sections = ["STDLIB","THIRDPARTY","FIRSTPARTY","LOCALFOLDER"]
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+markers = ["unit"]

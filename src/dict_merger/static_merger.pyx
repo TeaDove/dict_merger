@@ -1,22 +1,18 @@
-# Dict merger
-Simple Cython+Python library for merge python dictionaries recursively
+from copy import deepcopy
 
-### Usage
 
-```python
-from dict_merger.static_merger import merge
+def _rmerge(dict first_dict, dict second_dict, list path):
+    for key in second_dict:
+        if (
+            key in first_dict
+            and isinstance(first_dict[key], dict)
+            and isinstance(second_dict[key], dict)
+        ):
+            _rmerge(first_dict[key], second_dict[key], path + [str(key)])
+        else:
+            first_dict[key] = second_dict[key]
+    return first_dict
 
-a = {1: 2, 2: 3, 3: {1: 1, 2: 3}, 4: 1}
-b = {1: 5, 3: {1: 2}, 5: 3}
-
-print(merge(a, b))
-# {1: 5, 2: 3, 3: {1: 2, 2: 3}, 4: 1, 5: 3}
-```
-
-### API
-```cython
-# dict_merger.static_merger - pure Cython module with static python types
-# dict_merger.dynamic_merger - same module, but with dynamic types, works a bit slower
 
 def merge(dict first_dict, dict second_dict) -> dict:
     """
@@ -26,7 +22,9 @@ def merge(dict first_dict, dict second_dict) -> dict:
     :param second_dict:
     :return:
     """
-    ...
+    return _rmerge(deepcopy(first_dict), second_dict, list())
+
+
 
 def merge_inplace(dict first_dict, dict second_dict) -> None:
     """
@@ -34,7 +32,7 @@ def merge_inplace(dict first_dict, dict second_dict) -> None:
     then the one that is later in the argument sequence takes precedence.
     First dict will contain merged version
     """
-    ...
+    _rmerge(first_dict, second_dict, list())
 
 def merge_many(list dicts) -> dict:
     """
@@ -43,19 +41,9 @@ def merge_many(list dicts) -> dict:
     :param dicts: list of dicts
     :return: dict
     """
-    ...
-```
-
-#### Installation
-```shell
-# via pypi
-pip install dict_merger
-
-# via git
-pip install git+https://github.com/TeaDove/dict_merger.git #@branch/tag
-
-# build locally
-git clone https://github.com/TeaDove/dict_merger.git #@branch/tag
-cd dict_merger
-make install
-```
+    if len(dicts) < 2:
+        raise Exception("List len should be at least 2")
+    cdef dict to_return = merge(dicts[0], dicts[1])
+    for i in range(2, len(dicts)):
+        to_return = merge(to_return, dicts[i])
+    return to_return
