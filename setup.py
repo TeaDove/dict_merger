@@ -86,10 +86,13 @@ else:
 
 setup(
     name="dict_merger",
-    version="0.0.1",
+    version="0.0.2.1",
+    author="Peter Ibragimov",
+    description="Cython recursive dictionary merging",
     packages=find_packages("src"),
     ext_modules=exc_modules,
-    install_requires=["Cython==0.29.32"],
     package_dir={"": "src"},
+    url="https://github.com/TeaDove/dict_merger",
     long_description=open(join(dirname(__file__), "README.md")).read(),
+    long_description_content_type="text/markdown",
 )
