@@ -17,8 +17,8 @@ install-from-source: dist
 
 clean:
 	$(RM) -r build dist src/*.egg-info
-	$(RM) -r src/dict_merger/*.c
 	$(RM) -r src/dict_merger/*.so
+	$(RM) -r src/*.so
 	$(RM) -r *.so
 	$(RM) -r .pytest_cache
 	find . -name __pycache__ -exec rm -r {} +

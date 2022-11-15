@@ -1185,21 +1185,21 @@ static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_import[] = "__import__";
-static const char __pyx_k_c_merger[] = "c_merger";
-static const char __pyx_k_pure_merger[] = "pure_merger";
+static const char __pyx_k_static_merger[] = "static_merger";
+static const char __pyx_k_dynamic_merger[] = "dynamic_merger";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_dict_merger___init[] = "dict_merger.__init__";
 static PyObject *__pyx_n_s_;
 static PyObject *__pyx_n_s_all;
-static PyObject *__pyx_n_s_c_merger;
-static PyObject *__pyx_n_u_c_merger;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_kp_u_dict_merger___init;
+static PyObject *__pyx_n_s_dynamic_merger;
+static PyObject *__pyx_n_u_dynamic_merger;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
-static PyObject *__pyx_n_s_pure_merger;
-static PyObject *__pyx_n_u_pure_merger;
+static PyObject *__pyx_n_s_static_merger;
+static PyObject *__pyx_n_u_static_merger;
 static PyObject *__pyx_n_s_test;
 /* Late includes */
 
@@ -1251,15 +1251,15 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_, __pyx_k_, sizeof(__pyx_k_), 0, 0, 1, 1},
   {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
-  {&__pyx_n_s_c_merger, __pyx_k_c_merger, sizeof(__pyx_k_c_merger), 0, 0, 1, 1},
-  {&__pyx_n_u_c_merger, __pyx_k_c_merger, sizeof(__pyx_k_c_merger), 0, 1, 0, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_kp_u_dict_merger___init, __pyx_k_dict_merger___init, sizeof(__pyx_k_dict_merger___init), 0, 1, 0, 0},
+  {&__pyx_n_s_dynamic_merger, __pyx_k_dynamic_merger, sizeof(__pyx_k_dynamic_merger), 0, 0, 1, 1},
+  {&__pyx_n_u_dynamic_merger, __pyx_k_dynamic_merger, sizeof(__pyx_k_dynamic_merger), 0, 1, 0, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
-  {&__pyx_n_s_pure_merger, __pyx_k_pure_merger, sizeof(__pyx_k_pure_merger), 0, 0, 1, 1},
-  {&__pyx_n_u_pure_merger, __pyx_k_pure_merger, sizeof(__pyx_k_pure_merger), 0, 1, 0, 1},
+  {&__pyx_n_s_static_merger, __pyx_k_static_merger, sizeof(__pyx_k_static_merger), 0, 0, 1, 1},
+  {&__pyx_n_u_static_merger, __pyx_k_static_merger, sizeof(__pyx_k_static_merger), 0, 1, 0, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
@@ -1550,69 +1550,56 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "dict_merger/__init__.py":1
- * from . import c_merger             # <<<<<<<<<<<<<<
- * from . import pure_merger
+ * from . import dynamic_merger, static_merger             # <<<<<<<<<<<<<<
  *
+ * __all__ = ["dynamic_merger", "static_merger"]
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_s_c_merger);
-  __Pyx_GIVEREF(__pyx_n_s_c_merger);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_c_merger);
+  __Pyx_INCREF(__pyx_n_s_dynamic_merger);
+  __Pyx_GIVEREF(__pyx_n_s_dynamic_merger);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_dynamic_merger);
+  __Pyx_INCREF(__pyx_n_s_static_merger);
+  __Pyx_GIVEREF(__pyx_n_s_static_merger);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_static_merger);
   __pyx_t_2 = __Pyx_Import(__pyx_n_s_, __pyx_t_1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_c_merger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_dynamic_merger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_c_merger, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_dynamic_merger, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_static_merger); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_static_merger, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "dict_merger/__init__.py":2
- * from . import c_merger
- * from . import pure_merger             # <<<<<<<<<<<<<<
+  /* "dict_merger/__init__.py":3
+ * from . import dynamic_merger, static_merger
  *
- * __all__ = ["c_merger", "pure_merger"]
+ * __all__ = ["dynamic_merger", "static_merger"]             # <<<<<<<<<<<<<<
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_INCREF(__pyx_n_s_pure_merger);
-  __Pyx_GIVEREF(__pyx_n_s_pure_merger);
-  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_pure_merger);
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_, __pyx_t_2, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_u_dynamic_merger);
+  __Pyx_GIVEREF(__pyx_n_u_dynamic_merger);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u_dynamic_merger);
+  __Pyx_INCREF(__pyx_n_u_static_merger);
+  __Pyx_GIVEREF(__pyx_n_u_static_merger);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u_static_merger);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_2) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_pure_merger); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pure_merger, __pyx_t_2) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "dict_merger/__init__.py":4
- * from . import pure_merger
- *
- * __all__ = ["c_merger", "pure_merger"]             # <<<<<<<<<<<<<<
- */
-  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_INCREF(__pyx_n_u_c_merger);
-  __Pyx_GIVEREF(__pyx_n_u_c_merger);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_u_c_merger);
-  __Pyx_INCREF(__pyx_n_u_pure_merger);
-  __Pyx_GIVEREF(__pyx_n_u_pure_merger);
-  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_pure_merger);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "dict_merger/__init__.py":1
- * from . import c_merger             # <<<<<<<<<<<<<<
- * from . import pure_merger
+ * from . import dynamic_merger, static_merger             # <<<<<<<<<<<<<<
  *
+ * __all__ = ["dynamic_merger", "static_merger"]
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /*--- Wrapped vars code ---*/
 
