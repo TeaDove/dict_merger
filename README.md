@@ -1,8 +1,50 @@
 # Dict merger
 Simple Cython+Python library for merge python dictionaries recursively
 
-
 ### Usage
+
+```python
+from dict_merger.static_merger import merge
+
+a = {1: 2, 2: 3, 3: {1: 1, 2: 3}, 4: 1}
+b = {1: 5, 3: {1: 2}, 5: 3}
+
+print(merge(a, b))
+# {1: 5, 2: 3, 3: {1: 2, 2: 3}, 4: 1, 5: 3}
+```
+
+### API
+```cython
+# dict_merger.static_merger - pure Cython module with static python types
+# dict_merger.dynamic_merger - same module, but with dynamic types, works a bit slower
+
+def merge(dict first_dict, dict second_dict) -> dict:
+    """
+    Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+    then the one that is later in the argument sequence takes precedence.
+    :param first_dict:
+    :param second_dict:
+    :return:
+    """
+    ...
+
+def merge_inplace(dict first_dict, dict second_dict) -> None:
+    """
+    Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+    then the one that is later in the argument sequence takes precedence.
+    First dict will contain merged version
+    """
+    ...
+
+def merge_many(list dicts) -> dict:
+    """
+    Merge list of dicts. If more than one given map or object defines the same key or attribute,
+    then the one that is later in the argument sequence takes precedence.
+    :param dicts: list of dicts
+    :return: dict
+    """
+    ...
+```
 
 #### Installation
 ```shell
@@ -10,10 +52,10 @@ Simple Cython+Python library for merge python dictionaries recursively
 pip install dict_merger
 
 # via git
-pip install git+https://github.com/TeaDove/dict_merger.git@feature/mvp
+pip install git+https://github.com/TeaDove/dict_merger.git #@branch/tag
 
 # build locally
-git clone https://github.com/TeaDove/dict_merger.git
+git clone https://github.com/TeaDove/dict_merger.git #@branch/tag
 cd dict_merger
 make install
 ```
