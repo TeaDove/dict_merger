@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-# __all__ = ["merge", "merge_inplace", "merge_many", "merge_many_inplace"]
+__all__ = ["merge", "merge_inplace", "merge_many", "merge_many_inplace"]
 
 
 cdef dict _rmerge(dict first_dict, dict second_dict):

@@ -6,7 +6,7 @@ import pytest
 from tests import shared
 
 
-def gen_dict(n, depth=0, max_depth=3):
+def gen_dict(n, depth=0, max_depth=4):
     dict_ = {}
     for i in range(n):
         if random.randint(0, 1) or depth >= max_depth:
@@ -85,13 +85,13 @@ class TestClass:
             end=" ",
         )
 
-    @pytest.mark.parametrize("dict_a, dict_b", [(gen_dict(3), gen_dict(3)) for i in range(4)])
+    @pytest.mark.parametrize("dict_a, dict_b", [(gen_dict(20), gen_dict(20)) for i in range(1)])
     @pytest.mark.parametrize("dict_merger_impl", shared.mergers)
     def test_merge_inplace_random(self, dict_merger_impl, dict_a, dict_b):
         globals_ = globals()
         globals_["dict_merger_impl"] = dict_merger_impl
-        globals_["a"] = dict_a
-        globals_["b"] = dict_b
+        globals_["a"] = deepcopy(dict_a)
+        globals_["b"] = deepcopy(dict_b)
 
         print(
             f"dict_a: {get_items_count(dict_a)}, dict_b: {get_items_count(dict_b)}",
