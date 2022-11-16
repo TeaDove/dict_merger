@@ -1,10 +1,10 @@
 .PHONY: build dist redist install install-from-source clean uninstall
 
 build:
-	CYTHONIZE=true ./setup.py build_ext --inplace
+	CYTHONIZE=true python3.10 ./setup.py build_ext --inplace
 
 dist:
-	./setup.py sdist bdist_wheel
+	python3.10 setup.py sdist bdist_wheel
 
 upload:
 	twine upload --repository pypi dist/*
@@ -12,8 +12,8 @@ upload:
 redist: clean dist
 
 install:
-	python3 setup.py build_ext --inplace
-	pip install .
+	python3.10 setup.py build_ext --inplace
+	python3.10 -m pip install .
 
 clean:
 	$(RM) -r build dist src/*.egg-info
@@ -24,7 +24,7 @@ clean:
 	find . -name __pycache__ -exec rm -r {} +
 
 uninstall:
-	pip uninstall -y dict_merger
+	python3.10 -m pip uninstall -y dict_merger
 
 reinstall:
 	make uninstall && make clean && make install

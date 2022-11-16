@@ -86,7 +86,7 @@ else:
 
 setup(
     name="dict_merger",
-    version="0.0.2.1",
+    version="0.0.3",
     author="Peter Ibragimov",
     description="Cython recursive dictionary merging",
     packages=find_packages("src"),
