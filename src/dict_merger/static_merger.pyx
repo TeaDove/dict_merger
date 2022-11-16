@@ -1,7 +1,9 @@
 from copy import deepcopy
 
+__all__ = ["merge", "merge_inplace", "merge_many"]
 
-def _rmerge(dict first_dict, dict second_dict, list path) -> dict:
+
+cdef dict _rmerge(dict first_dict, dict second_dict, list path):
     """
     Recursive merging utility
 
@@ -21,7 +23,7 @@ def _rmerge(dict first_dict, dict second_dict, list path) -> dict:
     return first_dict
 
 
-def merge(dict first_dict, dict second_dict) -> dict:
+cdef dict merge(dict first_dict, dict second_dict):
     """
     Merge 2 dicts recursively.
     If more than one given dict defines the same key,
@@ -34,7 +36,7 @@ def merge(dict first_dict, dict second_dict) -> dict:
 
 
 
-def merge_inplace(dict first_dict, dict second_dict) -> None:
+cdef void merge_inplace(dict first_dict, dict second_dict):
     """
     Merge 2 dicts recursively.
     If more than one given dict defines the same key,
@@ -46,7 +48,7 @@ def merge_inplace(dict first_dict, dict second_dict) -> None:
     """
     _rmerge(first_dict, second_dict, list())
 
-def merge_many(list dicts) -> dict:
+cdef dict merge_many(list dicts):
     """
     Merge list of dicts.
     If more than one given dict defines the same key,

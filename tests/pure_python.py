@@ -1,8 +1,6 @@
 from copy import deepcopy
 from typing import List, Mapping, MutableMapping, Sequence, Union
 
-__all__ = ["merge", "merge_inplace", "merge_many"]
-
 
 def _rmerge(first_dict: Union[MutableMapping, Mapping], second_dict: Mapping, path: List[str]) -> Mapping:
     """
