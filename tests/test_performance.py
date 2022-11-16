@@ -70,6 +70,21 @@ class TestClass:
             end=" ",
         )
 
+    @pytest.mark.parametrize("dict_merger_impl", shared.mergers)
+    def test_merge_many_inpace_static(self, dict_merger_impl):
+        globals_ = globals()
+        globals_["dict_merger_impl"] = dict_merger_impl
+        globals_["a"] = deepcopy(shared.a)
+
+        print(
+            timeit.timeit(
+                "dict_merger_impl.merge_many_inplace([a, shared.b, shared.c])",
+                globals=globals_,
+                number=shared.iterations,
+            ),
+            end=" ",
+        )
+
     @pytest.mark.parametrize("dict_a, dict_b", [(gen_dict(3), gen_dict(3)) for i in range(4)])
     @pytest.mark.parametrize("dict_merger_impl", shared.mergers)
     def test_merge_inplace_random(self, dict_merger_impl, dict_a, dict_b):

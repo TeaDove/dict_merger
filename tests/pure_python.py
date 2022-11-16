@@ -57,3 +57,20 @@ def merge_many(dicts: Sequence[MutableMapping]) -> Mapping:
     for i in range(2, len(dicts)):
         to_return = merge(to_return, dicts[i])
     return to_return
+
+
+def merge_many_inplace(dicts: Sequence[MutableMapping]) -> None:
+    """
+    Merge list of dicts.
+    If more than one given dict defines the same key,
+    then the one that is later in the argument sequence takes precedence.
+    :param dicts: list of dicts
+    :return: merged dict
+    """
+    if len(dicts) < 2:
+        raise Exception("List len should be at least 2")
+
+    consumer_dict = dicts[0]
+    merge_inplace(consumer_dict, dicts[1])
+    for i in range(2, len(dicts)):
+        merge_inplace(consumer_dict, dicts[i])

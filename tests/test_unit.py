@@ -31,3 +31,11 @@ class TestClass:
 
         assert original_a == shared.a
         assert result == shared.a_b_c_merge
+
+    @pytest.mark.parametrize("dict_merger_impl", shared.mergers)
+    def test_merge_many_inplace(self, dict_merger_impl):
+        original_a = deepcopy(shared.a)
+
+        dict_merger_impl.merge_many_inplace([original_a, shared.b, shared.c])
+
+        assert original_a == shared.a_b_c_merge
