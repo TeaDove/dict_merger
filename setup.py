@@ -74,15 +74,15 @@ def get_ext_paths(
 #     # ),
 # ]
 
-exc_modules = get_ext_paths(Path("src"))
+exc_paths = get_ext_paths(Path("src"))
 
 CYTHONIZE = (os.getenv("CYTHONIZE", "false") == "true") and (cythonize is not None)
 
 if CYTHONIZE:
     compiler_directives = {"language_level": 3, "embedsignature": True}
-    extensions = cythonize(exc_modules, compiler_directives=compiler_directives)
+    exc_modules = cythonize(exc_paths, compiler_directives=compiler_directives)
 else:
-    extensions = no_cythonize(exc_modules)
+    exc_modules = no_cythonize(exc_paths)
 
 setup(
     name="dict_merger",

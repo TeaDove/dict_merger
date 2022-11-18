@@ -1374,6 +1374,7 @@ static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_path[] = "path";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_Union[] = "Union";
 static const char __pyx_k_dicts[] = "dicts";
 static const char __pyx_k_merge[] = "merge";
 static const char __pyx_k_range[] = "range";
@@ -1399,6 +1400,7 @@ static PyObject *__pyx_kp_u_List_len_should_be_at_least_2;
 static PyObject *__pyx_n_s_Mapping;
 static PyObject *__pyx_n_s_MutableMapping;
 static PyObject *__pyx_n_s_Sequence;
+static PyObject *__pyx_n_s_Union;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_copy;
 static PyObject *__pyx_n_s_deepcopy;
@@ -1440,14 +1442,14 @@ static PyObject *__pyx_codeobj__9;
 /* "dict_merger/dynamic_merger.py":5
  *
  *
- * def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):             # <<<<<<<<<<<<<<
- *     for key in second_dict:
- *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):
+ * def _rmerge(first_dict: Union[MutableMapping, Mapping], second_dict: Mapping, path: List[str]) -> Mapping:             # <<<<<<<<<<<<<<
+ *     """
+ *     Recursive merging utility
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_1_rmerge(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11dict_merger_14dynamic_merger__rmerge[] = "_rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str])";
+static char __pyx_doc_11dict_merger_14dynamic_merger__rmerge[] = "_rmerge(first_dict: Union[MutableMapping, Mapping], second_dict: Mapping, path: List[str]) -> Mapping\n\n    Recursive merging utility\n\n    :param first_dict: first dict to merge, used as result\n    :param second_dict: dict to merge with\n    :param path: current dict path\n    ";
 static PyMethodDef __pyx_mdef_11dict_merger_14dynamic_merger_1_rmerge = {"_rmerge", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11dict_merger_14dynamic_merger_1_rmerge, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11dict_merger_14dynamic_merger__rmerge};
 static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_1_rmerge(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_first_dict = 0;
@@ -1545,9 +1547,9 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_rmerge", 0);
 
-  /* "dict_merger/dynamic_merger.py":6
- *
- * def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):
+  /* "dict_merger/dynamic_merger.py":13
+ *     :param path: current dict path
+ *     """
  *     for key in second_dict:             # <<<<<<<<<<<<<<
  *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):
  *             _rmerge(first_dict[key], second_dict[key], path + [str(key)])
@@ -1556,26 +1558,26 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
     __pyx_t_1 = __pyx_v_second_dict; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_second_dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_second_dict); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 6, __pyx_L1_error)
+    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 6, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 13, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 6, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 6, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 13, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 6, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -1585,7 +1587,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 6, __pyx_L1_error)
+          else __PYX_ERR(0, 13, __pyx_L1_error)
         }
         break;
       }
@@ -1594,21 +1596,21 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
     __Pyx_XDECREF_SET(__pyx_v_key, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "dict_merger/dynamic_merger.py":7
- * def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):
+    /* "dict_merger/dynamic_merger.py":14
+ *     """
  *     for key in second_dict:
  *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):             # <<<<<<<<<<<<<<
  *             _rmerge(first_dict[key], second_dict[key], path + [str(key)])
  *         else:
  */
-    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_key, __pyx_v_first_dict, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 7, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_key, __pyx_v_first_dict, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 14, __pyx_L1_error)
     __pyx_t_7 = (__pyx_t_6 != 0);
     if (__pyx_t_7) {
     } else {
       __pyx_t_5 = __pyx_t_7;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_first_dict, __pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_first_dict, __pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_7 = PyDict_Check(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -1618,7 +1620,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
       __pyx_t_5 = __pyx_t_6;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_second_dict, __pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_second_dict, __pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_6 = PyDict_Check(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -1627,27 +1629,27 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_5) {
 
-      /* "dict_merger/dynamic_merger.py":8
+      /* "dict_merger/dynamic_merger.py":15
  *     for key in second_dict:
  *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):
  *             _rmerge(first_dict[key], second_dict[key], path + [str(key)])             # <<<<<<<<<<<<<<
  *         else:
  *             first_dict[key] = second_dict[key]
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_rmerge); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 8, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_rmerge); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 15, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_first_dict, __pyx_v_key); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 8, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_first_dict, __pyx_v_key); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 15, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_10 = __Pyx_PyObject_GetItem(__pyx_v_second_dict, __pyx_v_key); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 8, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetItem(__pyx_v_second_dict, __pyx_v_key); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 15, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_11 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_v_key); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 8, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_v_key); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 15, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 8, __pyx_L1_error)
+      __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 15, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_GIVEREF(__pyx_t_11);
       PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_11);
       __pyx_t_11 = 0;
-      __pyx_t_11 = PyNumber_Add(__pyx_v_path, __pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 8, __pyx_L1_error)
+      __pyx_t_11 = PyNumber_Add(__pyx_v_path, __pyx_t_12); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 15, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_12 = NULL;
@@ -1665,7 +1667,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[4] = {__pyx_t_12, __pyx_t_9, __pyx_t_10, __pyx_t_11};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_13, 3+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 8, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_13, 3+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -1676,7 +1678,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[4] = {__pyx_t_12, __pyx_t_9, __pyx_t_10, __pyx_t_11};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_13, 3+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 8, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_13, 3+__pyx_t_13); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -1685,7 +1687,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
       } else
       #endif
       {
-        __pyx_t_14 = PyTuple_New(3+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 8, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(3+__pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 15, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         if (__pyx_t_12) {
           __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_12); __pyx_t_12 = NULL;
@@ -1699,15 +1701,15 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
         __pyx_t_9 = 0;
         __pyx_t_10 = 0;
         __pyx_t_11 = 0;
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 8, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_14, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "dict_merger/dynamic_merger.py":7
- * def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):
+      /* "dict_merger/dynamic_merger.py":14
+ *     """
  *     for key in second_dict:
  *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):             # <<<<<<<<<<<<<<
  *             _rmerge(first_dict[key], second_dict[key], path + [str(key)])
@@ -1716,7 +1718,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
       goto __pyx_L5;
     }
 
-    /* "dict_merger/dynamic_merger.py":10
+    /* "dict_merger/dynamic_merger.py":17
  *             _rmerge(first_dict[key], second_dict[key], path + [str(key)])
  *         else:
  *             first_dict[key] = second_dict[key]             # <<<<<<<<<<<<<<
@@ -1724,16 +1726,16 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
  *
  */
     /*else*/ {
-      __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_second_dict, __pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 10, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_v_second_dict, __pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(PyObject_SetItem(__pyx_v_first_dict, __pyx_v_key, __pyx_t_4) < 0)) __PYX_ERR(0, 10, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_first_dict, __pyx_v_key, __pyx_t_4) < 0)) __PYX_ERR(0, 17, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __pyx_L5:;
 
-    /* "dict_merger/dynamic_merger.py":6
- *
- * def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):
+    /* "dict_merger/dynamic_merger.py":13
+ *     :param path: current dict path
+ *     """
  *     for key in second_dict:             # <<<<<<<<<<<<<<
  *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):
  *             _rmerge(first_dict[key], second_dict[key], path + [str(key)])
@@ -1741,7 +1743,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "dict_merger/dynamic_merger.py":11
+  /* "dict_merger/dynamic_merger.py":18
  *         else:
  *             first_dict[key] = second_dict[key]
  *     return first_dict             # <<<<<<<<<<<<<<
@@ -1756,9 +1758,9 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
   /* "dict_merger/dynamic_merger.py":5
  *
  *
- * def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):             # <<<<<<<<<<<<<<
- *     for key in second_dict:
- *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):
+ * def _rmerge(first_dict: Union[MutableMapping, Mapping], second_dict: Mapping, path: List[str]) -> Mapping:             # <<<<<<<<<<<<<<
+ *     """
+ *     Recursive merging utility
  */
 
   /* function exit code */
@@ -1780,17 +1782,17 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger__rmerge(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "dict_merger/dynamic_merger.py":14
+/* "dict_merger/dynamic_merger.py":21
  *
  *
- * def merge(first_dict: MutableMapping, second_dict: Mapping) -> Mapping:             # <<<<<<<<<<<<<<
+ * def merge(first_dict: Mapping, second_dict: Mapping) -> Mapping:             # <<<<<<<<<<<<<<
  *     """
- *     Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+ *     Merge 2 dicts recursively.
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_3merge(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11dict_merger_14dynamic_merger_2merge[] = "merge(first_dict: MutableMapping, second_dict: Mapping) -> Mapping\n\n    Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,\n    then the one that is later in the argument sequence takes precedence.\n    :param first_dict:\n    :param second_dict:\n    :return:\n    ";
+static char __pyx_doc_11dict_merger_14dynamic_merger_2merge[] = "merge(first_dict: Mapping, second_dict: Mapping) -> Mapping\n\n    Merge 2 dicts recursively.\n    If more than one given dict defines the same key,\n    then the one that is later in the argument sequence takes precedence.\n    :param first_dict: first dict to merge\n    :param second_dict: second dict to merge\n    :return: merged dict\n    ";
 static PyMethodDef __pyx_mdef_11dict_merger_14dynamic_merger_3merge = {"merge", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11dict_merger_14dynamic_merger_3merge, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11dict_merger_14dynamic_merger_2merge};
 static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_3merge(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_first_dict = 0;
@@ -1824,11 +1826,11 @@ static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_3merge(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_second_dict)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("merge", 1, 2, 2, 1); __PYX_ERR(0, 14, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("merge", 1, 2, 2, 1); __PYX_ERR(0, 21, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "merge") < 0)) __PYX_ERR(0, 14, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "merge") < 0)) __PYX_ERR(0, 21, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -1841,7 +1843,7 @@ static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_3merge(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("merge", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 14, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("merge", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 21, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("dict_merger.dynamic_merger.merge", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1869,17 +1871,17 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_2merge(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("merge", 0);
 
-  /* "dict_merger/dynamic_merger.py":22
- *     :return:
+  /* "dict_merger/dynamic_merger.py":30
+ *     :return: merged dict
  *     """
  *     return _rmerge(deepcopy(first_dict), second_dict, list())             # <<<<<<<<<<<<<<
  *
  *
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_rmerge); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_rmerge); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -1893,10 +1895,10 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_2merge(CYTHON_UNUSED Py
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_first_dict) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_first_dict);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -1913,7 +1915,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_2merge(CYTHON_UNUSED Py
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_t_3, __pyx_v_second_dict, __pyx_t_4};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -1923,7 +1925,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_2merge(CYTHON_UNUSED Py
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_t_3, __pyx_v_second_dict, __pyx_t_4};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -1931,7 +1933,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_2merge(CYTHON_UNUSED Py
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -1945,7 +1947,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_2merge(CYTHON_UNUSED Py
     PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, __pyx_t_4);
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
@@ -1954,12 +1956,12 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_2merge(CYTHON_UNUSED Py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "dict_merger/dynamic_merger.py":14
+  /* "dict_merger/dynamic_merger.py":21
  *
  *
- * def merge(first_dict: MutableMapping, second_dict: Mapping) -> Mapping:             # <<<<<<<<<<<<<<
+ * def merge(first_dict: Mapping, second_dict: Mapping) -> Mapping:             # <<<<<<<<<<<<<<
  *     """
- *     Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+ *     Merge 2 dicts recursively.
  */
 
   /* function exit code */
@@ -1978,17 +1980,17 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_2merge(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "dict_merger/dynamic_merger.py":25
+/* "dict_merger/dynamic_merger.py":33
  *
  *
  * def merge_inplace(first_dict: MutableMapping, second_dict: Mapping) -> None:             # <<<<<<<<<<<<<<
  *     """
- *     Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+ *     Merge 2 dicts recursively.
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_5merge_inplace(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11dict_merger_14dynamic_merger_4merge_inplace[] = "merge_inplace(first_dict: MutableMapping, second_dict: Mapping) -> None\n\n    Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,\n    then the one that is later in the argument sequence takes precedence.\n    First dict will contain merged version\n    ";
+static char __pyx_doc_11dict_merger_14dynamic_merger_4merge_inplace[] = "merge_inplace(first_dict: MutableMapping, second_dict: Mapping) -> None\n\n    Merge 2 dicts recursively.\n    If more than one given dict defines the same key,\n    then the one that is later in the argument sequence takes precedence.\n\n    First dict will contain merged version, faster in general.\n    :param first_dict: first dict to merge, will contain merged version\n    :param second_dict: second dict to merge\n    ";
 static PyMethodDef __pyx_mdef_11dict_merger_14dynamic_merger_5merge_inplace = {"merge_inplace", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11dict_merger_14dynamic_merger_5merge_inplace, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11dict_merger_14dynamic_merger_4merge_inplace};
 static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_5merge_inplace(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_first_dict = 0;
@@ -2022,11 +2024,11 @@ static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_5merge_inplace(PyObject
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_second_dict)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("merge_inplace", 1, 2, 2, 1); __PYX_ERR(0, 25, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("merge_inplace", 1, 2, 2, 1); __PYX_ERR(0, 33, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "merge_inplace") < 0)) __PYX_ERR(0, 25, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "merge_inplace") < 0)) __PYX_ERR(0, 33, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2039,7 +2041,7 @@ static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_5merge_inplace(PyObject
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("merge_inplace", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 25, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("merge_inplace", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 33, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("dict_merger.dynamic_merger.merge_inplace", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2066,16 +2068,16 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_4merge_inplace(CYTHON_U
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("merge_inplace", 0);
 
-  /* "dict_merger/dynamic_merger.py":31
- *     First dict will contain merged version
+  /* "dict_merger/dynamic_merger.py":43
+ *     :param second_dict: second dict to merge
  *     """
  *     _rmerge(first_dict, second_dict, list())             # <<<<<<<<<<<<<<
  *
  *
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_rmerge); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_rmerge); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -2092,7 +2094,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_4merge_inplace(CYTHON_U
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_first_dict, __pyx_v_second_dict, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2101,14 +2103,14 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_4merge_inplace(CYTHON_U
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_first_dict, __pyx_v_second_dict, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 3+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(3+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -2122,19 +2124,19 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_4merge_inplace(CYTHON_U
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "dict_merger/dynamic_merger.py":25
+  /* "dict_merger/dynamic_merger.py":33
  *
  *
  * def merge_inplace(first_dict: MutableMapping, second_dict: Mapping) -> None:             # <<<<<<<<<<<<<<
  *     """
- *     Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+ *     Merge 2 dicts recursively.
  */
 
   /* function exit code */
@@ -2154,17 +2156,17 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_4merge_inplace(CYTHON_U
   return __pyx_r;
 }
 
-/* "dict_merger/dynamic_merger.py":34
+/* "dict_merger/dynamic_merger.py":46
  *
  *
  * def merge_many(dicts: Sequence[MutableMapping]) -> Mapping:             # <<<<<<<<<<<<<<
  *     """
- *     Merge list of dicts. If more than one given map or object defines the same key or attribute,
+ *     Merge list of dicts.
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_7merge_many(PyObject *__pyx_self, PyObject *__pyx_v_dicts); /*proto*/
-static char __pyx_doc_11dict_merger_14dynamic_merger_6merge_many[] = "merge_many(dicts: Sequence[MutableMapping]) -> Mapping\n\n    Merge list of dicts. If more than one given map or object defines the same key or attribute,\n    then the one that is later in the argument sequence takes precedence.\n    :param dicts: list of dicts\n    :return: dict\n    ";
+static char __pyx_doc_11dict_merger_14dynamic_merger_6merge_many[] = "merge_many(dicts: Sequence[MutableMapping]) -> Mapping\n\n    Merge list of dicts.\n    If more than one given dict defines the same key,\n    then the one that is later in the argument sequence takes precedence.\n    :param dicts: list of dicts\n    :return: merged dict\n    ";
 static PyMethodDef __pyx_mdef_11dict_merger_14dynamic_merger_7merge_many = {"merge_many", (PyCFunction)__pyx_pw_11dict_merger_14dynamic_merger_7merge_many, METH_O, __pyx_doc_11dict_merger_14dynamic_merger_6merge_many};
 static PyObject *__pyx_pw_11dict_merger_14dynamic_merger_7merge_many(PyObject *__pyx_self, PyObject *__pyx_v_dicts) {
   PyObject *__pyx_r = 0;
@@ -2198,32 +2200,32 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("merge_many", 0);
 
-  /* "dict_merger/dynamic_merger.py":41
- *     :return: dict
+  /* "dict_merger/dynamic_merger.py":54
+ *     :return: merged dict
  *     """
  *     if len(dicts) < 2:             # <<<<<<<<<<<<<<
  *         raise Exception("List len should be at least 2")
  *     to_return = merge(dicts[0], dicts[1])
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_dicts); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(__pyx_v_dicts); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_t_2 = ((__pyx_t_1 < 2) != 0);
   if (unlikely(__pyx_t_2)) {
 
-    /* "dict_merger/dynamic_merger.py":42
+    /* "dict_merger/dynamic_merger.py":55
  *     """
  *     if len(dicts) < 2:
  *         raise Exception("List len should be at least 2")             # <<<<<<<<<<<<<<
  *     to_return = merge(dicts[0], dicts[1])
  *     for i in range(2, len(dicts)):
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])), __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])), __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 42, __pyx_L1_error)
+    __PYX_ERR(0, 55, __pyx_L1_error)
 
-    /* "dict_merger/dynamic_merger.py":41
- *     :return: dict
+    /* "dict_merger/dynamic_merger.py":54
+ *     :return: merged dict
  *     """
  *     if len(dicts) < 2:             # <<<<<<<<<<<<<<
  *         raise Exception("List len should be at least 2")
@@ -2231,18 +2233,18 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
  */
   }
 
-  /* "dict_merger/dynamic_merger.py":43
+  /* "dict_merger/dynamic_merger.py":56
  *     if len(dicts) < 2:
  *         raise Exception("List len should be at least 2")
  *     to_return = merge(dicts[0], dicts[1])             # <<<<<<<<<<<<<<
  *     for i in range(2, len(dicts)):
  *         to_return = merge(to_return, dicts[i])
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_merge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_merge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_dicts, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_dicts, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_dicts, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetItemInt(__pyx_v_dicts, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -2259,7 +2261,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_5, __pyx_t_6};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2269,7 +2271,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_5, __pyx_t_6};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2277,7 +2279,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -2288,7 +2290,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
     PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_6);
     __pyx_t_5 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
@@ -2296,27 +2298,27 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
   __pyx_v_to_return = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "dict_merger/dynamic_merger.py":44
+  /* "dict_merger/dynamic_merger.py":57
  *         raise Exception("List len should be at least 2")
  *     to_return = merge(dicts[0], dicts[1])
  *     for i in range(2, len(dicts)):             # <<<<<<<<<<<<<<
  *         to_return = merge(to_return, dicts[i])
  *     return to_return
  */
-  __pyx_t_1 = PyObject_Length(__pyx_v_dicts); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(__pyx_v_dicts); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 57, __pyx_L1_error)
   __pyx_t_10 = __pyx_t_1;
   for (__pyx_t_11 = 2; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "dict_merger/dynamic_merger.py":45
+    /* "dict_merger/dynamic_merger.py":58
  *     to_return = merge(dicts[0], dicts[1])
  *     for i in range(2, len(dicts)):
  *         to_return = merge(to_return, dicts[i])             # <<<<<<<<<<<<<<
  *     return to_return
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_merge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_merge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_dicts, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_dicts, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_6 = NULL;
     __pyx_t_8 = 0;
@@ -2333,7 +2335,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_to_return, __pyx_t_9};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -2342,14 +2344,14 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_to_return, __pyx_t_9};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -2360,7 +2362,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
       __Pyx_GIVEREF(__pyx_t_9);
       PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_8, __pyx_t_9);
       __pyx_t_9 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -2369,7 +2371,7 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
     __pyx_t_3 = 0;
   }
 
-  /* "dict_merger/dynamic_merger.py":46
+  /* "dict_merger/dynamic_merger.py":59
  *     for i in range(2, len(dicts)):
  *         to_return = merge(to_return, dicts[i])
  *     return to_return             # <<<<<<<<<<<<<<
@@ -2379,12 +2381,12 @@ static PyObject *__pyx_pf_11dict_merger_14dynamic_merger_6merge_many(CYTHON_UNUS
   __pyx_r = __pyx_v_to_return;
   goto __pyx_L0;
 
-  /* "dict_merger/dynamic_merger.py":34
+  /* "dict_merger/dynamic_merger.py":46
  *
  *
  * def merge_many(dicts: Sequence[MutableMapping]) -> Mapping:             # <<<<<<<<<<<<<<
  *     """
- *     Merge list of dicts. If more than one given map or object defines the same key or attribute,
+ *     Merge list of dicts.
  */
 
   /* function exit code */
@@ -2455,6 +2457,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Mapping, __pyx_k_Mapping, sizeof(__pyx_k_Mapping), 0, 0, 1, 1},
   {&__pyx_n_s_MutableMapping, __pyx_k_MutableMapping, sizeof(__pyx_k_MutableMapping), 0, 0, 1, 1},
   {&__pyx_n_s_Sequence, __pyx_k_Sequence, sizeof(__pyx_k_Sequence), 0, 0, 1, 1},
+  {&__pyx_n_s_Union, __pyx_k_Union, sizeof(__pyx_k_Union), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_copy, __pyx_k_copy, sizeof(__pyx_k_copy), 0, 0, 1, 1},
   {&__pyx_n_s_deepcopy, __pyx_k_deepcopy, sizeof(__pyx_k_deepcopy), 0, 0, 1, 1},
@@ -2481,7 +2484,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 57, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -2491,64 +2494,64 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "dict_merger/dynamic_merger.py":42
+  /* "dict_merger/dynamic_merger.py":55
  *     """
  *     if len(dicts) < 2:
  *         raise Exception("List len should be at least 2")             # <<<<<<<<<<<<<<
  *     to_return = merge(dicts[0], dicts[1])
  *     for i in range(2, len(dicts)):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_List_len_should_be_at_least_2); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_List_len_should_be_at_least_2); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
   /* "dict_merger/dynamic_merger.py":5
  *
  *
- * def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):             # <<<<<<<<<<<<<<
- *     for key in second_dict:
- *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):
+ * def _rmerge(first_dict: Union[MutableMapping, Mapping], second_dict: Mapping, path: List[str]) -> Mapping:             # <<<<<<<<<<<<<<
+ *     """
+ *     Recursive merging utility
  */
   __pyx_tuple__2 = PyTuple_Pack(4, __pyx_n_s_first_dict, __pyx_n_s_second_dict, __pyx_n_s_path, __pyx_n_s_key); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
   __pyx_codeobj__3 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__2, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dict_merger_dynamic_merger_p, __pyx_n_s_rmerge, 5, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__3)) __PYX_ERR(0, 5, __pyx_L1_error)
 
-  /* "dict_merger/dynamic_merger.py":14
+  /* "dict_merger/dynamic_merger.py":21
  *
  *
- * def merge(first_dict: MutableMapping, second_dict: Mapping) -> Mapping:             # <<<<<<<<<<<<<<
+ * def merge(first_dict: Mapping, second_dict: Mapping) -> Mapping:             # <<<<<<<<<<<<<<
  *     """
- *     Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+ *     Merge 2 dicts recursively.
  */
-  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_first_dict, __pyx_n_s_second_dict); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_first_dict, __pyx_n_s_second_dict); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
-  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dict_merger_dynamic_merger_p, __pyx_n_s_merge, 14, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_codeobj__5 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__4, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dict_merger_dynamic_merger_p, __pyx_n_s_merge, 21, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__5)) __PYX_ERR(0, 21, __pyx_L1_error)
 
-  /* "dict_merger/dynamic_merger.py":25
+  /* "dict_merger/dynamic_merger.py":33
  *
  *
  * def merge_inplace(first_dict: MutableMapping, second_dict: Mapping) -> None:             # <<<<<<<<<<<<<<
  *     """
- *     Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+ *     Merge 2 dicts recursively.
  */
-  __pyx_tuple__6 = PyTuple_Pack(2, __pyx_n_s_first_dict, __pyx_n_s_second_dict); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(2, __pyx_n_s_first_dict, __pyx_n_s_second_dict); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dict_merger_dynamic_merger_p, __pyx_n_s_merge_inplace, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dict_merger_dynamic_merger_p, __pyx_n_s_merge_inplace, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 33, __pyx_L1_error)
 
-  /* "dict_merger/dynamic_merger.py":34
+  /* "dict_merger/dynamic_merger.py":46
  *
  *
  * def merge_many(dicts: Sequence[MutableMapping]) -> Mapping:             # <<<<<<<<<<<<<<
  *     """
- *     Merge list of dicts. If more than one given map or object defines the same key or attribute,
+ *     Merge list of dicts.
  */
-  __pyx_tuple__8 = PyTuple_Pack(3, __pyx_n_s_dicts, __pyx_n_s_to_return, __pyx_n_s_i); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(3, __pyx_n_s_dicts, __pyx_n_s_to_return, __pyx_n_s_i); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dict_merger_dynamic_merger_p, __pyx_n_s_merge_many, 34, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_dict_merger_dynamic_merger_p, __pyx_n_s_merge_many, 46, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2725,6 +2728,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_dynamic_merger(PyObject *__pyx_pyi
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2832,7 +2836,7 @@ if (!__Pyx_RefNanny) {
 
   /* "dict_merger/dynamic_merger.py":1
  * from copy import deepcopy             # <<<<<<<<<<<<<<
- * from typing import List, Mapping, MutableMapping, Sequence
+ * from typing import List, Mapping, MutableMapping, Sequence, Union
  *
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -2851,11 +2855,11 @@ if (!__Pyx_RefNanny) {
 
   /* "dict_merger/dynamic_merger.py":2
  * from copy import deepcopy
- * from typing import List, Mapping, MutableMapping, Sequence             # <<<<<<<<<<<<<<
+ * from typing import List, Mapping, MutableMapping, Sequence, Union             # <<<<<<<<<<<<<<
  *
  *
  */
-  __pyx_t_2 = PyList_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_List);
   __Pyx_GIVEREF(__pyx_n_s_List);
@@ -2869,6 +2873,9 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_s_Sequence);
   __Pyx_GIVEREF(__pyx_n_s_Sequence);
   PyList_SET_ITEM(__pyx_t_2, 3, __pyx_n_s_Sequence);
+  __Pyx_INCREF(__pyx_n_s_Union);
+  __Pyx_GIVEREF(__pyx_n_s_Union);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_n_s_Union);
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_typing, __pyx_t_2, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2888,131 +2895,155 @@ if (!__Pyx_RefNanny) {
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_Sequence, __pyx_t_2) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_Union); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Union, __pyx_t_2) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "dict_merger/dynamic_merger.py":5
  *
  *
- * def _rmerge(first_dict: MutableMapping, second_dict: Mapping, path: List[str]):             # <<<<<<<<<<<<<<
- *     for key in second_dict:
- *         if key in first_dict and isinstance(first_dict[key], dict) and isinstance(second_dict[key], dict):
- */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_MutableMapping); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_first_dict, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_second_dict, __pyx_t_2) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_List); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_2, ((PyObject *)(&PyUnicode_Type))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_path, __pyx_t_3) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11dict_merger_14dynamic_merger_1_rmerge, 0, __pyx_n_s_rmerge, NULL, __pyx_n_s_dict_merger_dynamic_merger, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_1);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_rmerge, __pyx_t_3) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "dict_merger/dynamic_merger.py":14
- *
- *
- * def merge(first_dict: MutableMapping, second_dict: Mapping) -> Mapping:             # <<<<<<<<<<<<<<
+ * def _rmerge(first_dict: Union[MutableMapping, Mapping], second_dict: Mapping, path: List[str]) -> Mapping:             # <<<<<<<<<<<<<<
  *     """
- *     Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+ *     Recursive merging utility
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Union); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_MutableMapping); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_MutableMapping); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_first_dict, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
+  __pyx_t_3 = 0;
+  __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_first_dict, __pyx_t_4) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_second_dict, __pyx_t_4) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_List); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_4, ((PyObject *)(&PyUnicode_Type))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_path, __pyx_t_5) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_return, __pyx_t_5) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_11dict_merger_14dynamic_merger_1_rmerge, 0, __pyx_n_s_rmerge, NULL, __pyx_n_s_dict_merger_dynamic_merger, __pyx_d, ((PyObject *)__pyx_codeobj__3)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_rmerge, __pyx_t_5) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+  /* "dict_merger/dynamic_merger.py":21
+ *
+ *
+ * def merge(first_dict: Mapping, second_dict: Mapping) -> Mapping:             # <<<<<<<<<<<<<<
+ *     """
+ *     Merge 2 dicts recursively.
+ */
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_second_dict, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_first_dict, __pyx_t_1) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_return, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_second_dict, __pyx_t_1) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_11dict_merger_14dynamic_merger_3merge, 0, __pyx_n_s_merge, NULL, __pyx_n_s_dict_merger_dynamic_merger, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_3);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_merge, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_return, __pyx_t_1) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_11dict_merger_14dynamic_merger_3merge, 0, __pyx_n_s_merge, NULL, __pyx_n_s_dict_merger_dynamic_merger, __pyx_d, ((PyObject *)__pyx_codeobj__5)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_5);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_merge, __pyx_t_1) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "dict_merger/dynamic_merger.py":25
+  /* "dict_merger/dynamic_merger.py":33
  *
  *
  * def merge_inplace(first_dict: MutableMapping, second_dict: Mapping) -> None:             # <<<<<<<<<<<<<<
  *     """
- *     Merge 2 dicts recursively. If more than one given map or object defines the same key or attribute,
+ *     Merge 2 dicts recursively.
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_MutableMapping); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_first_dict, __pyx_t_3) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_second_dict, __pyx_t_3) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_return, Py_None) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11dict_merger_14dynamic_merger_5merge_inplace, 0, __pyx_n_s_merge_inplace, NULL, __pyx_n_s_dict_merger_dynamic_merger, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_1);
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_MutableMapping); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_first_dict, __pyx_t_5) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_second_dict, __pyx_t_5) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_return, Py_None) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_11dict_merger_14dynamic_merger_5merge_inplace, 0, __pyx_n_s_merge_inplace, NULL, __pyx_n_s_dict_merger_dynamic_merger, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_merge_inplace, __pyx_t_3) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_merge_inplace, __pyx_t_5) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "dict_merger/dynamic_merger.py":34
+  /* "dict_merger/dynamic_merger.py":46
  *
  *
  * def merge_many(dicts: Sequence[MutableMapping]) -> Mapping:             # <<<<<<<<<<<<<<
  *     """
- *     Merge list of dicts. If more than one given map or object defines the same key or attribute,
+ *     Merge list of dicts.
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Sequence); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Sequence); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_MutableMapping); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_MutableMapping); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dicts, __pyx_t_2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dicts, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_return, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_11dict_merger_14dynamic_merger_7merge_many, 0, __pyx_n_s_merge_many, NULL, __pyx_n_s_dict_merger_dynamic_merger, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_3);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_merge_many, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Mapping); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_return, __pyx_t_2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_11dict_merger_14dynamic_merger_7merge_many, 0, __pyx_n_s_merge_many, NULL, __pyx_n_s_dict_merger_dynamic_merger, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_5);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_merge_many, __pyx_t_2) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "dict_merger/dynamic_merger.py":1
  * from copy import deepcopy             # <<<<<<<<<<<<<<
- * from typing import List, Mapping, MutableMapping, Sequence
+ * from typing import List, Mapping, MutableMapping, Sequence, Union
  *
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_4) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -3022,6 +3053,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
   if (__pyx_m) {
     if (__pyx_d) {
       __Pyx_AddTraceback("init dict_merger.dynamic_merger", __pyx_clineno, __pyx_lineno, __pyx_filename);
